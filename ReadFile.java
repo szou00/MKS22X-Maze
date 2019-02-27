@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ReadFile {
 
   public static void read() throws FileNotFoundException {
-    File text = new File("maze.txt");
+    File text = new File("Maze1.txt");
     Scanner in = new Scanner(text);
     String line;
     while (in.hasNextLine()) {
@@ -16,7 +16,7 @@ public class ReadFile {
 
   public static int readtoArray() throws FileNotFoundException {
     int l = 0;
-    File text = new File("maze.txt");
+    File text = new File("Maze1.txt");
     Scanner in = new Scanner(text);
     String line;
     while (in.hasNextLine()) {
