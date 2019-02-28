@@ -25,9 +25,26 @@ public class Maze{
     */
 
     public Maze(String filename) throws FileNotFoundException{
+      int c = 0;
+      int l = 0;
       File text = new File("Maze1.txt");
       Scanner in = new Scanner(text);
       String line;
+      while (in.hasNextLine()) {
+        line = in.nextLine();
+        l+=1;
+        c = line.length();
+      }
+      maze = new char[l][c];
+      Scanner fill = new Scanner(text);
+      while (in.hasNextLine()) {
+        line = in.nextLine();
+        for (int i=0;i<l;i++) {
+          for (int x=0;x<c;x++) {
+            maze[i][x] = line.charAt(x);
+          }
+        }
+      }
     }
 
 
