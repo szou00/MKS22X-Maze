@@ -103,7 +103,7 @@ public class Maze{
           }
         }
       }
-      return solve(sx,sy);
+      return solve(sx,sy,0);
 
             //find the location of the S.
 
@@ -134,8 +134,14 @@ public class Maze{
 
         All visited spots that are part of the solution are changed to '@'
     */
-    private int solve(int row, int col){ //you can add more parameters since this is private
-
+    private int solve(int row, int col,int a){ //you can add more parameters since this is private
+      int[][] d = {{0,-1},{0,1},{1,0},{-1,0}}; //all the possible directions
+      if (maze[row][col] == 'E') {
+        return a;
+      }
+      for (int i = 0;i<d.length;i++) {
+        if solve(row+1,col+1,a+1); //?? does this work
+      }
 
         //automatic animation! You are welcome.
         if(animate){
