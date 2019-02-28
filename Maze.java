@@ -92,7 +92,18 @@ public class Maze{
 
     */
     public int solve(){
-      return 0;
+      int sx = 0;
+      int sy = 0;
+      for(int i=0;i<maze.length;i++) {
+        for (int x=0;x<maze[0].length;x++) {
+          if (maze[i][x] == 'S') {
+            maze[i][x] = ' ';
+            sx = i;
+            sy = x;
+          }
+        }
+      }
+      return solve(sx,sy);
 
             //find the location of the S.
 
