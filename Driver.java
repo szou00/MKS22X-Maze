@@ -8,6 +8,8 @@ public class Driver {
     try {
       Maze test = new Maze("Maze1.txt");
       System.out.println(test);
+      System.out.println(test.solve());
+      System.out.println(test);
     }
     catch (FileNotFoundException e) {
       System.out.println("no");
