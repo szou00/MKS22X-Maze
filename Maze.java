@@ -27,7 +27,7 @@ public class Maze{
     public Maze(String filename) throws FileNotFoundException{
       int c = 0;
       int l = 0;
-      File text = new File("Maze1.txt");
+      File text = new File(filename);
       Scanner in = new Scanner(text);
       String line;
       while (in.hasNextLine()) {
@@ -37,14 +37,25 @@ public class Maze{
       }
       maze = new char[l][c];
       Scanner fill = new Scanner(text);
-      while (in.hasNextLine()) {
-        line = in.nextLine();
+      while (fill.hasNextLine()) {
         for (int i=0;i<l;i++) {
+          line = fill.nextLine();
           for (int x=0;x<c;x++) {
             maze[i][x] = line.charAt(x);
           }
         }
       }
+    }
+
+    public String toString() {
+      String ans = "";
+      for (int i = 0;i<maze.length;i++) {
+        for (int x = 0; x<maze[0].length;x++) {
+          ans += maze[i][x];
+        }
+        ans += "\n";
+      }
+      return ans;
     }
 
 
@@ -81,6 +92,7 @@ public class Maze{
 
     */
     public int solve(){
+      return 0;
 
             //find the location of the S.
 
