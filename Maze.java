@@ -55,22 +55,24 @@ public class Maze{
     //if yes, returns true
     //otherwise returns false
     public boolean goodFile(){
-      int Sr = -1; int Sc = -1; int Er = -1;int Ec= -1;
+      int Sr = -1; int Sc = -1; int Er = -1;int Ec= -1;int count =0;
       //the values are all initialized at -1
       for (int r=0;r<maze.length;r++) {
         for (int c=0;c<maze[0].length;c++) {
           if (maze[r][c] == 'S') { //if there's an S
             Sr = r; //changes the variables to their corresponding values
             Sc = c;
+            count +=1;
           }
           if (maze[r][c] == 'E') { //if there's an E
             Er = r; //changes the variables to their corresponding values
             Ec = c;
+            count +=1;
           }
         }
       }
       //if any of the variable remain unchanged, that means either E or S wasn't found
-      if (Sr == -1 || Sc == -1 || Er == -1 || Ec == -1) {
+      if (Sr == -1 || Sc == -1 || Er == -1 || Ec == -1 || count != 2) {
         return false;
       }
       return true;
