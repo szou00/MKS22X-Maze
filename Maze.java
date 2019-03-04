@@ -45,6 +45,28 @@ public class Maze{
           }
         }
       }
+      in.close();
+    }
+
+    public boolean goodFile(){
+      int Sr = -1; int Sc = -1; int Er = -1;int Ec= -1;
+      for (int r=0;r<maze.length;r++) {
+        for (int c=0;c<maze[0].length;c++) {
+          if (maze[r][c] == 'S') {
+            Sr = r;
+            Sc = c;
+          }
+          if (maze[r][c] == 'E') {
+            Er = r;
+            Ec = c;
+          }
+        }
+      }
+      // System.out.println(Sr + " " + Sc + " " + Er + " " + Ec);
+      if (Sr == -1 || Sc == -1 || Er == -1 || Ec == -1) {
+        return false;
+      }
+      return true;
     }
 
     public String toString() {
