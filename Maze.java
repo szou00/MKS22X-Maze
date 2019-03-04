@@ -188,29 +188,4 @@ public class Maze{
         }
         return -1; //so it compiles
     }
-
-    public int findEr() {
-      for (int r=0;r<maze.length;r++) {
-        for (int c=0;c<maze[0].length;c++) {
-          if (maze[r][c] == 'E') {
-            return r;
-          }
-        }
-      }
-      return -1;
-    }
-
-    public int findEc() {
-      for (int r=0;r<maze.length;r++) {
-        for (int c=0;c<maze[0].length;c++) {
-          if (maze[r][c] == 'E') {
-            return c;
-          }
-        }
-      }
-      return -1;
-    }
-
-
-
 }
