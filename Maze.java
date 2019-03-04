@@ -136,7 +136,7 @@ public class Maze{
     */
     private int solve(int row, int col,int a){ //you can add more parameters since this is private
         //automatic animation! You are welcome.
-        // setAnimate(true);
+        setAnimate(true);
         if(animate){
 
             clearTerminal();
@@ -146,13 +146,20 @@ public class Maze{
         }
         int[][] d = {{0,-1},{0,1},{1,0},{-1,0}}; //all the possible directions
         // System.out.println(maze[row][col] == 'E');
-        if (row == this.findEr() && col == this.findEc()) {
+        if (maze[row][col] == 'E') {
           return a;
         }
+        if (maze[row][col] != ' ') {
+          return -1;
+        }
         for (int i = 0;i<d.length;i++) {
-          if (addSolution(row,col)) {
-            solve(row+d[i][0],col+d[i][1],a+1);
-            removeSolution(row,col);
+          maze[row][col] = '@';
+          int solution = solve(row+d[i][0],col+d[i][1],a+1);
+          if (solution != -1) {
+            return solution;
+          }
+          else {
+            maze[row][col] = '.';
           }
         }
         return -1; //so it compiles
