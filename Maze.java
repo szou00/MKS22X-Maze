@@ -140,10 +140,11 @@ public class Maze{
         return a;
       }
       for (int i = 0;i<d.length;i++) {
-        if (solve(row+d[i][0],col+[i][1],a+1)) {
-          maze[row+d[i][0]][col+[i][1]] = '@';
+        if (addSolution(row,col)) {
+          maze[row][col] = '@';
+          solve(row+d[i][0],col+d[i][0],a+1);
         } //?? does this work
-        maze[row+d[i][0]][col+[i][1]] = '.';
+        maze[row][col] = '.';
       }
 
         //automatic animation! You are welcome.
@@ -160,12 +161,13 @@ public class Maze{
         return -1; //so it compiles
     }
 
-    // public boolean addSolution(int row, int col) {
-    //   if (maze[row][col] == ' ') {
-    //     maze[row[col] = '@';
-    //     return true;
-    //   }
-    // }
+    public boolean addSolution(int row, int col) {
+      if (maze[row][col] == ' ') {
+        maze[row[col] = '@';
+        return true;
+      }
+      return false;
+    }
 
 
 }
