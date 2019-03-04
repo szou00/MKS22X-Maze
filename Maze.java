@@ -136,7 +136,7 @@ public class Maze{
     */
     private int solve(int row, int col,int a){ //you can add more parameters since this is private
         //automatic animation! You are welcome.
-        setAnimate(true);
+        // setAnimate(true);
         if(animate){
 
             clearTerminal();
@@ -146,21 +146,23 @@ public class Maze{
         }
         int[][] d = {{0,-1},{0,1},{1,0},{-1,0}}; //all the possible directions
         // System.out.println(maze[row][col] == 'E');
-        if (maze[row][col] == 'E') {
+        if (row == this.findEr() && col == this.findEc()) {
           return a;
         }
         for (int i = 0;i<d.length;i++) {
           if (addSolution(row,col)) {
             solve(row+d[i][0],col+d[i][1],a+1);
             removeSolution(row,col);
-          } //?? does this work
+          }
         }
         return -1; //so it compiles
     }
 
     public boolean addSolution(int row, int col) {
+      if (maze[row][col] == 'E') {
+        return true;
+      }
       if (maze[row][col] == ' ') {
-        // System.out.println("nothing at S");
         maze[row][col] = '@';
         return true;
       }
@@ -174,6 +176,29 @@ public class Maze{
       }
       return false;
     }
+
+    public int findEr() {
+      for (int r=0;r<maze.length;r++) {
+        for (int c=0;c<maze[0].length;c++) {
+          if (maze[r][c] == 'E') {
+            return r;
+          }
+        }
+      }
+      return -1;
+    }
+
+    public int findEc() {
+      for (int r=0;r<maze.length;r++) {
+        for (int c=0;c<maze[0].length;c++) {
+          if (maze[r][c] == 'E') {
+            return c;
+          }
+        }
+      }
+      return -1;
+    }
+
 
 
 }
