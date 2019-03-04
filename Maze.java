@@ -45,6 +45,9 @@ public class Maze{
           }
         }
       }
+      if (!this.goodFile()) {
+        throw new IllegalStateException();
+      }
       in.close();
     }
 
@@ -62,7 +65,6 @@ public class Maze{
           }
         }
       }
-      // System.out.println(Sr + " " + Sc + " " + Er + " " + Ec);
       if (Sr == -1 || Sc == -1 || Er == -1 || Ec == -1) {
         return false;
       }
