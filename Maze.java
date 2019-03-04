@@ -135,19 +135,8 @@ public class Maze{
         All visited spots that are part of the solution are changed to '@'
     */
     private int solve(int row, int col,int a){ //you can add more parameters since this is private
-      int[][] d = {{0,-1},{0,1},{1,0},{-1,0}}; //all the possible directions
-      if (maze[row][col] == 'E') {
-        return a;
-      }
-      for (int i = 0;i<d.length;i++) {
-        if (addSolution(row,col)) {
-          maze[row][col] = '@';
-          solve(row+d[i][0],col+d[i][0],a+1);
-        } //?? does this work
-        maze[row][col] = '.';
-      }
-
         //automatic animation! You are welcome.
+        setAnimate(true);
         if(animate){
 
             clearTerminal();
@@ -155,15 +144,32 @@ public class Maze{
 
             wait(20);
         }
-
-        //COMPLETE SOLVE
-
+        int[][] d = {{0,-1},{0,1},{1,0},{-1,0}}; //all the possible directions
+        // System.out.println(maze[row][col] == 'E');
+        if (maze[row][col] == 'E') {
+          return a;
+        }
+        for (int i = 0;i<d.length;i++) {
+          if (addSolution(row,col)) {
+            solve(row+d[i][0],col+d[i][1],a+1);
+            removeSolution(row,col);
+          } //?? does this work
+        }
         return -1; //so it compiles
     }
 
     public boolean addSolution(int row, int col) {
       if (maze[row][col] == ' ') {
-        maze[row[col] = '@';
+        // System.out.println("nothing at S");
+        maze[row][col] = '@';
+        return true;
+      }
+      return false;
+    }
+
+    public boolean removeSolution(int row, int col) {
+      if (maze[row][col] == '@') {
+        maze[row][col] = ' ';
         return true;
       }
       return false;
