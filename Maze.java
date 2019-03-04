@@ -165,25 +165,6 @@ public class Maze{
         return -1; //so it compiles
     }
 
-    public boolean addSolution(int row, int col) {
-      if (maze[row][col] == 'E') {
-        return true;
-      }
-      if (maze[row][col] == ' ') {
-        maze[row][col] = '@';
-        return true;
-      }
-      return false;
-    }
-
-    public boolean removeSolution(int row, int col) {
-      if (maze[row][col] == '@') {
-        maze[row][col] = ' ';
-        return true;
-      }
-      return false;
-    }
-
     public int findEr() {
       for (int r=0;r<maze.length;r++) {
         for (int c=0;c<maze[0].length;c++) {
